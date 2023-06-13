@@ -1,0 +1,69 @@
+('E:\\Python '
+ 'Projects\\speed-typing-app\\build\\typingSpeedTest\\typingSpeedTest.pkg',
+ {'BINARY': True,
+  'DATA': True,
+  'EXECUTABLE': True,
+  'EXTENSION': True,
+  'PYMODULE': True,
+  'PYSOURCE': True,
+  'PYZ': False,
+  'SPLASH': True},
+ [('PYZ-00.pyz',
+   'E:\\Python Projects\\speed-typing-app\\build\\typingSpeedTest\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\build\\typingSpeedTest\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\build\\typingSpeedTest\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\build\\typingSpeedTest\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\build\\typingSpeedTest\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\build\\typingSpeedTest\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'e:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_setuptools',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
+   'PYSOURCE'),
+  ('pyi_rth__tkinter',
+   'E:\\Python '
+   'Projects\\speed-typing-app\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
+   'PYSOURCE'),
+  ('main', 'E:\\Python Projects\\speed-typing-app\\main.pyw', 'PYSOURCE')],
+ True,
+ False,
+ False,
+ [],
+ None,
+ None,
+ None)
