@@ -12,9 +12,10 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 global WORDS_DF
-WORDS_DF = pd.read_csv(resource_path('assets\\words.csv'))
+WORDS_DF = pd.read_csv(resource_path('dist\\typingSpeedTest\\assets\\words.csv'))
 
-FONT = 'LATO'
+FONT = 'Terminal'
+COLOR_GREEN = '#00FF66'
 
 class App(Tk):
     def __init__(self, *args, **kwargs):
@@ -22,17 +23,17 @@ class App(Tk):
 
 
         
-        self.configure(bg='#9376E0')
+        self.configure(bg='black')
         self.title('Test Your Typing Speed')
 
-        self.frm = Frame(self, bg='#9376E0')
+        self.frm = Frame(self, bg='black')
         self.frm.grid(padx=15, pady=15)
 
-        self.bg_img = Image.open(resource_path('assets\\sticky-note.png'))
+        self.bg_img = Image.open(resource_path('dist\\typingSpeedTest\\assets\\laptop.png'))
         self.bg_img = self.bg_img.resize((800, 800))
 
         self.bg_img_pi = ImageTk.PhotoImage(self.bg_img)
-        self.bg_panel = Label(self.frm, image=self.bg_img_pi, bg='#9376E0')
+        self.bg_panel = Label(self.frm, image=self.bg_img_pi, bg='black')
         self.bg_panel.grid(row=1, column=1)
 
         # set and reset word lists and labels
@@ -46,8 +47,8 @@ class App(Tk):
             for i in range(len(self.words_list)):
                 label_var = StringVar()
                 label_var.set(self.words_list[i])
-                self.word_label = Label(self.frm, textvariable=label_var, font=(FONT, 45), bg='#E893CF')
-                self.word_label.place(relx=0.35, rely=0.27+(i+1)*0.0723)
+                self.word_label = Label(self.frm, textvariable=label_var, font=(FONT, 30), bg='black', fg=COLOR_GREEN)
+                self.word_label.place(relx=0.24, rely=0.2+(i+1)*0.067)
                 label_list.append(self.word_label)
 
         def add_entry_to_list():
@@ -67,27 +68,13 @@ class App(Tk):
                 label_var.set(self.words_list[i])
                 label_list[i].config(textvariable=label_var)
 
-        self.user_entry = Entry(self.frm, width=50)
+        self.user_entry = Entry(self.frm, width=50, bg='#42423f', fg=COLOR_GREEN)
         self.user_entry.grid(column=1, row=2, pady=15)
         self.user_entry.configure(font=(FONT, 20))
-        self.user_entry.focus_set()
         self.user_entry.bind('<Return>', update_labels)
 
-        def compare_lists(user_list, key_list):
-            number_correct = 0
-            for word in user_list:
-                if word in key_list:
-                    number_correct += 1
-            try:
-                percent_correct = (number_correct/len(key_list))*100
-            except ZeroDivisionError:
-                percent_correct = 0.0
-            self.score_label = Label(self.frm, text=f'You typed {len(user_list)} words per minute\n with {percent_correct}% accuracy', font=(FONT, 35), bg='#E893CF')
-            self.score_label.grid(column=1, row=1)
 
-            self.user_entry.destroy()
-
-        self.countdown_label = Label(self.frm, bg='#9376E0', font=(FONT, 60), fg='white')
+        self.countdown_label = Label(self.frm, bg='black', font=(FONT, 60), fg='white')
         self.countdown_label.grid(row=0, column=1, pady=10)
 
         def countdown(count):
@@ -99,18 +86,38 @@ class App(Tk):
                     label.destroy()
                 compare_lists(user_words_list, key_words_list)
 
+        def compare_lists(user_list, key_list):
+            number_correct = 0
+            for word in user_list:
+                if word in key_list:
+                    number_correct += 1
+            try:
+                percent_correct = (number_correct/len(key_list))*100
+            except ZeroDivisionError:
+                percent_correct = 0.0
+            self.score_label = Label(self.frm, text=f'You typed {len(user_list)} words per minute\n with {percent_correct}% accuracy', font=('Terminal', 30), bg='black', fg=COLOR_GREEN)
+            self.score_label.grid(column=1, row=1)
+            self.user_entry.destroy()
+
         def start_game():
             self.start_button.destroy()
             self.instructions.destroy()
+            self.unbind('<Return>')
+            self.user_entry.focus_set()
             show_words()
             countdown(60)
 
-        self.start_button = Button(self.frm, text='Click here to start!', command=start_game, font=(FONT, 30))
-        self.start_button.grid(column=1, row=0)
+        def on_enter_key(event):
+            self.start_button.invoke()
+            
+        self.bind('<Return>', on_enter_key)
 
+        self.start_button = Button(self.frm, text='Click here or press Enter to start!', command=start_game, font=(FONT, 20))
+        self.start_button.grid(column=1, row=0)
+            
         instructions_text = 'You have 60 seconds to type as many words as you can.\nYou will be served 5 words at a time.\nType out each word with a space between.\nPress Enter when you finish the last word.\nType carefully! You will not be told if you misspelled a word!'
 
-        self.instructions = Label(self.frm, text=instructions_text, justify='left', font=(FONT, 20))
+        self.instructions = Label(self.frm, text=instructions_text, justify='left', font=(FONT, 15))
         self.instructions.place(relx=.5, rely=.5, anchor='center')
 
 
